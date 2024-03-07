@@ -8,12 +8,18 @@ import ReduxProvider from "./providers/ReduxProvider";
 import LoginModal from "./comporents/modals/LoginModal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import getCurrentUser from "./actions/getCurrentUser";
 
+//font ekleme
 const newFont = Nunito({
   subsets: ["latin"],
 });
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export default function RootLayout  ({ children }: { children: React.ReactNode }) {
+
+  //oturum acılan user aldım navbarda gosternmek icin props gectim
+  const user = getCurrentUser();
+
   return (
     <html className={newFont.className} lang="tr">
       <head>
@@ -27,7 +33,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <MountedClient>
             <LoginModal />
             <RegisterModal />
-            <Navbar />
+            <Navbar user={user} />
           </MountedClient>
           {children}
         </ReduxProvider>
@@ -36,7 +42,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default RootLayout;
 
 /*
 //* tip belirlemeleri
@@ -51,4 +56,15 @@ const CategoriesItem: React.FC<CategoriesItemProps> = ({
 //*genel
 <div onClick={()=> router.push(`?Category = ${name}`)}  = ? oldugu zaman yonelndirme yapmıyor sadece url degisiyor
 
+
+//* yapılan degisklikleri db gonderme
+npx prisma db push 
+
+
+
+//////DATABASE_URL="mongodb+srv://nurullahdinc156:nurullah123@next13youtbeprojects.8keswii.mongodb.net/"
+
+
 */
+
+ 

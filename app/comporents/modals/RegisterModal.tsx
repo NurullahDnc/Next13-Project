@@ -14,6 +14,7 @@ import { registerModalFun } from "@/app/redux/modalSlice";
 import { useAppSelector } from "@/app/redux/hooks";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { signIn } from "next-auth/react"; 
 
 const RegisterModal = () => {
   const dispacth = useDispatch();
@@ -25,6 +26,7 @@ const RegisterModal = () => {
     watch,
     formState: { errors },
   } = useForm<FieldValues>({
+
     //varsayılan degerleri
     defaultValues: {
       name: "",
@@ -32,16 +34,18 @@ const RegisterModal = () => {
       password: "",
     },
   });
+  //veri datanın icerisinde
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
 
-    axios.post("api", data)
+    axios
+      .post("/api/register", data)
       .then(() => {
         //kayıt islemi basarılı ise modal'ı kapat
         dispacth(registerModalFun());
         toast.success("kayıt islemi basarılı");
       })
-      .catch((err: any) => {        
+      .catch((err: any) => {
         toast.error("kayit isleminde bir hata olsutu");
       });
   };
@@ -49,6 +53,7 @@ const RegisterModal = () => {
   //modal icerigi orta kısmı  degisken icerisinde tanımladık
   const bodyElement = (
     <div>
+      {/*id gonderiyoruz benzersiz, verileri ona gore tutyor */}
       <Input
         id={"name"}
         type={"text"}
@@ -81,7 +86,7 @@ const RegisterModal = () => {
   //modal'in yani popup alt kısmı
   const footerElement = (
     <Button
-      onSubmit={() => {}}
+      onSubmit={() => {signIn("google")}}
       btnLabel="Google ile giriş"
       outline
       icon={FcGoogle}

@@ -28,6 +28,9 @@ const Modal: React.FC<modalProps> = ({
     onClose()
   }
   
+  {/*colback func =()=> handlecahde */}
+
+  //arow func
   const submitFunc =()=>{
     onSubmit()
   }

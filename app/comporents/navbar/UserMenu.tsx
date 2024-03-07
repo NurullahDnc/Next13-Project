@@ -5,14 +5,16 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import UserMenuItem from "./UserMenuItem";
 import { useDispatch } from "react-redux";
 import { loginModalFun, registerModalFun } from "@/app/redux/modalSlice";
+import { User } from "@prisma/client";
 
 
-const UserMenu = () => {
+const UserMenu = ({user}: {user:User | any | undefined}) => {
 
     const [openMenu, setOpenMenu] = useState(false);
     const dispacth = useDispatch();
 
-
+    // console.log(user, "user");
+    
   return (
     <div onClick={()=> setOpenMenu(!openMenu)} className="flex relative justify-center gap-2 items-center  ">
        

@@ -58,9 +58,8 @@ export const authOptions: AuthOptions = {
 
   // Oturum (session) ve sayfa yönlendirmeleri ile ilgili ek ayarlar
   pages: {
-    signIn: "/", // Giriş sayfasının yolu
-    error: "/your-custom-error-page", // Doğru sayfa yolunu belirtin
-
+    signIn: "/",  // Giriş sayfasının yolu
+    error: "/custom-error-page",  // Özel hata sayfasının yolu
   },
   session: {
     strategy: "jwt", // Oturum stratejisi

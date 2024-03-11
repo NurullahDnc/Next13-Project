@@ -24,11 +24,11 @@ const LoginModal = () => {
     });
     const onSubmit: SubmitHandler<FieldValues> = data => {  
         console.log(data);
-        signIn('credentials' , {
+        signIn('credentials', {
             ...data,
-            redirect: false
-        })
-        .then((callback) => {
+            redirect: false,
+          })
+          .then((callback) => {
             if(callback?.ok){
                 dispacth(loginModalFun())
                 router.refresh();
@@ -36,12 +36,12 @@ const LoginModal = () => {
             }
             if(callback?.error){
                 toast.error('login işlemi hatalı!!!')
-            }
+            } 
         })
-        
+
     };
 
-    //modal icerigi orta kısmı  degisken icerisinde tanımladık
+    //modal icerigi orta kısmı,  degisken icerisinde tanımladık
     const bodyElement =(
 
         <div>
@@ -77,7 +77,7 @@ const LoginModal = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
 
 
-    {/*modal yani popup kısmı tamamı  */}
+    {/*modal, popup kısmı props geciyoruz*/}
       <Modal
             isOpen={loginModal}
             onClose={()=> {dispacth(loginModalFun())}} 

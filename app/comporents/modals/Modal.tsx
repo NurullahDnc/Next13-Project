@@ -34,7 +34,7 @@ const Modal: React.FC<modalProps> = ({
   const submitFunc =()=>{
     onSubmit()
   }
-
+  
   //isopen false ise bos don, isopen true gelirse modal gosterilecek false gelirse nul don
   if (!isOpen) {
     return null

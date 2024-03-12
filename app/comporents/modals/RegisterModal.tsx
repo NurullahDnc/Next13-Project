@@ -92,7 +92,7 @@ const RegisterModal = () => {
       icon={FcGoogle}
     />
   );
-
+      
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {/*modal yani popup kısmı tamamı  */}
